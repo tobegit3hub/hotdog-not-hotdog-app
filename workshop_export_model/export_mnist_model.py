@@ -14,21 +14,15 @@ from tensorflow.python.util import compat
 def build_dnn_model():
   input_size = 784
   output_size = 10
-
   model = keras.models.Sequential()
-
   model.add(Dense(128, input_shape=(input_size, )))
   model.add(Activation("relu"))
-
   model.add(Dense(64))
   model.add(Activation("relu"))
-
   model.add(Dense(32))
   model.add(Activation("relu"))
-
   model.add(Dense(output_size))
   model.add(Activation("softmax"))
-
   return model
 
 
@@ -56,7 +50,6 @@ def export_savedmodel(model):
 
 
 def main():
-
   # Define hyper-parameters
   OUTPUT_CLASS = 10
   EPOCH_NUMBER = 3
@@ -98,7 +91,7 @@ def main():
   metrics = model.evaluate(X_test, Y_test, verbose=VERBOSE)
   test_loss = metrics[0]
   test_accuracy = metrics[1]
-  print("Accuracy: {}".format(test_accuracy))
+  print("Loss: {}, accuracy: {}".format(test_loss, test_accuracy))
 
 
 if __name__ == "__main__":
